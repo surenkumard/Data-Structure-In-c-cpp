@@ -1,0 +1,38 @@
+class Node{
+    public:
+        int data;
+        Node* left;
+        Node* right;
+        int svalue;
+}
+
+Node* merge(Node* root1, Node* root2){
+    if(root1 == nullptr){
+        return root2;
+    }
+    if(root2 == nullptr){
+        return root1;
+    }
+
+    Node *temp, *returned_heap, *final;
+
+    if(root1->data < root2->data){
+        returned_heap = merge(root1->right, root2);
+        final = root1;
+    }
+    else{
+        returned_heap = merge(root1, root2->right);
+        final = root2;
+    }
+
+    if(returned_heap->svalue > final->svalue){
+        //swap
+        temp = final->left;
+        final->left = returned_heap;
+        final->right = temp;
+    }
+    else{
+        final->right = returned_heap;
+    }
+    return final;
+}

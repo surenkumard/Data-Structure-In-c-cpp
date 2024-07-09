@@ -1,0 +1,5 @@
+karthi 18 32
+arthi 56 11
+saru 33 78
+lava 76 11
+
